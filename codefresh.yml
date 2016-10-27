@@ -7,6 +7,19 @@ steps:
     image-name: ShevchikIvan/docker-spring-boot-3
     dockerfile: Dockerfile
     tag: latest
+  build-step-name2:
+        type: composition
+        working-directory: ${{initial-clone}}
+        composition:
+            version: '2'
+            services:
+              db:
+                image: postgres
+                ports:
+                  - 5432
+        composition-variables:
+              - key=value
+
 
 #  push-to-dockerhub:
 #    type: push
